@@ -6,9 +6,19 @@ services:
     environment:
       CRAWLAB_NODE_MASTER: "Y"
       CRAWLAB_MONGO_HOST: "mongo"
+      CRAWLAB_MONGO_PORT: "27017"
+      CRAWLAB_MONGO_DB: "crawlab"
+      CRAWLAB_MONGO_USERNAME: "username"     # Add username
+      CRAWLAB_MONGO_PASSWORD: "password"  # Add password
     ports:
       - "8080:8080"
     depends_on:
       - mongo
+
   mongo:
     image: mongo:4.2
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "username"    # Add username
+      MONGO_INITDB_ROOT_PASSWORD: "password" # Add password
+    ports:
+      - "27017:27017"  # Expose MongoDB port
